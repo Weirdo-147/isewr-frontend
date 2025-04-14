@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: isewr-frontend
+    name: lenslynx
     env: static
     buildCommand: bash build.sh
     staticPublishPath: ./build
