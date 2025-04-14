@@ -1,0 +1,121 @@
+:root {
+  /* Light theme variables */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-accent: #6366f1;
+  --color-border: #e5e7eb;
+  --color-input-bg: #ffffff;
+  --color-input-border: #d1d5db;
+  --color-upload-area-bg: #f3f4f6;
+  --color-upload-area-border: #d1d5db;
+  --color-upload-area-text: #6b7280;
+  --color-nav-bg-from: #3b82f6;
+  --color-nav-bg-to: #4f46e5;
+  --color-nav-text: #ffffff;
+  --color-card-bg: #ffffff;
+}
+
+/* Dark theme variables */
+.dark-theme, .app.dark {
+  --color-bg-primary: #0f172a;
+  --color-bg-secondary: #1e293b;
+  --color-text-primary: #e2e8f0;
+  --color-text-secondary: #94a3b8;
+  --color-accent: #818cf8;
+  --color-border: #334155;
+  --color-input-bg: #1e293b;
+  --color-input-border: #475569;
+  --color-upload-area-bg: #1e293b;
+  --color-upload-area-border: #475569;
+  --color-upload-area-text: #94a3b8;
+  --color-nav-bg-from: #0f172a;
+  --color-nav-bg-to: #1e293b;
+  --color-nav-text: #e2e8f0;
+  --color-card-bg: #1e293b;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply theme variables to specific elements */
+nav.bg-gradient-to-r {
+  background: linear-gradient(to right, var(--color-nav-bg-from), var(--color-nav-bg-to)) !important;
+}
+
+nav .text-white {
+  color: var(--color-nav-text) !important;
+}
+
+.bg-gray-50 {
+  background-color: var(--color-bg-primary) !important;
+}
+
+.bg-white {
+  background-color: var(--color-card-bg) !important;
+}
+
+.text-gray-700 {
+  color: var(--color-text-primary) !important;
+}
+
+.bg-gray-100 {
+  background-color: var(--color-bg-secondary) !important;
+}
+
+/* Additional styles for the deepfake detection page */
+.app.dark h1, .app.dark h2, .dark-theme h1, .dark-theme h2 {
+  color: var(--color-text-primary);
+}
+
+.app.dark p, .dark-theme p {
+  color: var(--color-text-secondary);
+}
+
+/* Make upload area more consistent with theme */
+.app.dark .upload-area, .dark-theme .upload-area {
+  background-color: var(--color-upload-area-bg);
+  border-color: var(--color-upload-area-border);
+}
+
+/* Add transition for smooth theme switching */
+body, nav, main, footer, div, p, h1, h2, h3, h4, h5, h6 {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}

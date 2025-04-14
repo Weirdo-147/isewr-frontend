@@ -1,0 +1,166 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme (default) */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+  --color-border: #e5e7eb;
+  --color-input-bg: #ffffff;
+  --color-input-border: #d1d5db;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --color-card-shadow: rgba(0, 0, 0, 0.1);
+  --color-error: #ef4444;
+  --color-success: #10b981;
+  --color-upload-area-bg: #f3f4f6;
+  --color-upload-area-border: #d1d5db;
+  --color-upload-area-text: #6b7280;
+}
+
+.dark-theme {
+  /* Dark theme */
+  --color-bg-primary: #111827;
+  --color-bg-secondary: #1f2937;
+  --color-text-primary: #f9fafb;
+  --color-text-secondary: #d1d5db;
+  --color-border: #374151;
+  --color-input-bg: #1f2937;
+  --color-input-border: #4b5563;
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  --color-card-shadow: rgba(0, 0, 0, 0.4);
+  --color-error: #f87171;
+  --color-success: #34d399;
+  --color-upload-area-bg: #1f2937;
+  --color-upload-area-border: #4b5563;
+  --color-upload-area-text: #d1d5db;
+}
+
+body {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Add CSS animation for fade-in effect */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Apply theme styles to common elements */
+.bg-white {
+  background-color: var(--color-bg-primary);
+}
+
+.bg-gray-50, .bg-gray-100 {
+  background-color: var(--color-bg-secondary);
+}
+
+.text-gray-900 {
+  color: var(--color-text-primary);
+}
+
+.text-gray-500, .text-gray-700, .text-gray-600, .text-gray-800 {
+  color: var(--color-text-secondary);
+}
+
+.border-gray-200, .border-gray-300 {
+  border-color: var(--color-border);
+}
+
+input, select, textarea {
+  background-color: var(--color-input-bg);
+  border-color: var(--color-input-border);
+  color: var(--color-text-primary);
+}
+
+/* Theme styles for upload areas */
+.upload-area, 
+[class*="dropzone"], 
+[class*="upload"],
+.file-upload-container {
+  background-color: var(--color-upload-area-bg) !important;
+  border-color: var(--color-upload-area-border) !important;
+  color: var(--color-upload-area-text) !important;
+}
+
+/* Apply theme to SVG icons within dark theme */
+.dark .svg-icon,
+.dark-theme .svg-icon,
+.dark svg,
+.dark-theme svg {
+  fill: var(--color-text-secondary);
+  stroke: var(--color-text-secondary);
+}
+
+/* Image containers */
+.image-preview-container, 
+.image-container, 
+.preview-container {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border);
+}
+
+/* Cards and panels */
+.card, 
+.panel,
+[class*="card"],
+[class*="panel"],
+.shadow-md,
+.shadow-lg,
+.shadow-sm {
+  background-color: var(--color-bg-primary);
+  border-color: var(--color-border);
+  box-shadow: 0 4px 6px var(--color-card-shadow);
+}
+
+/* This ensures all pages inherit the theme */
+#root {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+/* Dark theme specific app container styles */
+.app.dark {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+/* Override for specific components */
+.app.dark .image-recognition-container,
+.app.dark .deepfake-detection-container,
+.app.dark .ai-detection-container,
+.app.dark .processing-container {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+/* Override for upload areas in specific pages */
+.app.dark .upload-section,
+.app.dark .drop-area,
+.app.dark .dashed-border,
+.app.dark .file-input-area {
+  background-color: var(--color-upload-area-bg);
+  border-color: var(--color-upload-area-border);
+  color: var(--color-upload-area-text);
+}

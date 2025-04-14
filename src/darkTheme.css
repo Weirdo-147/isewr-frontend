@@ -1,0 +1,191 @@
+/* Dark theme overrides */
+.app.dark, .dark-theme {
+  /* Main app backgrounds */
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Navigation bar */
+.app.dark nav.bg-gradient-to-r, .dark-theme nav.bg-gradient-to-r {
+  background: linear-gradient(to right, #0f172a, #1e293b) !important;
+}
+
+/* Active nav links */
+.app.dark nav a.bg-white, .dark-theme nav a.bg-white {
+  background-color: #4f46e5 !important;
+  color: #ffffff !important;
+}
+
+/* Inactive nav links hover */
+.app.dark nav a.text-white:hover, .dark-theme nav a.text-white:hover {
+  background-color: #4f46e5 !important;
+}
+
+/* Sign in button */
+.app.dark nav a.bg-blue-500, .dark-theme nav a.bg-blue-500 {
+  background-color: #4f46e5 !important;
+}
+
+.app.dark nav a.bg-blue-500:hover, .dark-theme nav a.bg-blue-500:hover {
+  background-color: #4338ca !important;
+}
+
+/* Profile dropdown */
+.app.dark .profile-menu-container .bg-white, 
+.dark-theme .profile-menu-container .bg-white {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+.app.dark .profile-menu-container .text-gray-700,
+.dark-theme .profile-menu-container .text-gray-700,
+.app.dark .profile-menu-container .text-gray-900,
+.dark-theme .profile-menu-container .text-gray-900 {
+  color: #e2e8f0 !important;
+}
+
+.app.dark .profile-menu-container .hover\:bg-gray-100:hover,
+.dark-theme .profile-menu-container .hover\:bg-gray-100:hover {
+  background-color: #334155 !important;
+}
+
+.app.dark .border-gray-200, .dark-theme .border-gray-200 {
+  border-color: #334155 !important;
+}
+
+/* Main content area */
+.app.dark .min-h-screen.bg-gray-50, 
+.app.dark .min-h-screen.bg-gradient-to-b,
+.dark-theme .min-h-screen.bg-gray-50,
+.dark-theme .min-h-screen.bg-gradient-to-b {
+  background: #0f172a !important;
+  background-image: none !important;
+}
+
+/* Content cards and panels */
+.app.dark .bg-white, .dark-theme .bg-white {
+  background-color: #1e293b !important;
+}
+
+/* Page headers and titles - make more visible */
+.app.dark h1, .dark-theme h1 {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.app.dark .text-gray-800, .dark-theme .text-gray-800 {
+  color: #f8fafc !important;
+}
+
+.app.dark .text-gray-700, .dark-theme .text-gray-700 {
+  color: #e2e8f0 !important;
+}
+
+.app.dark .text-gray-500, .dark-theme .text-gray-500 {
+  color: #cbd5e1 !important;
+}
+
+.app.dark h2, .dark-theme h2 {
+  color: #f8fafc !important;
+  font-weight: 500 !important;
+}
+
+/* Improve page subtitle visibility */
+.app.dark h1 + p, .dark-theme h1 + p {
+  color: #cbd5e1 !important;
+  opacity: 1 !important;
+}
+
+/* Image Recognition specific adjustments */
+.app.dark .min-h-screen .text-center h1.text-3xl,
+.dark-theme .min-h-screen .text-center h1.text-3xl,
+.app.dark .min-h-screen .text-center h1.text-4xl,
+.dark-theme .min-h-screen .text-center h1.text-4xl {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: -0.025em;
+}
+
+.app.dark .min-h-screen .text-center p,
+.dark-theme .min-h-screen .text-center p {
+  color: #94a3b8 !important;
+  font-size: 1.125rem !important;
+  margin-top: 0.5rem !important;
+}
+
+/* Buttons in dark mode */
+.app.dark button.bg-blue-500, 
+.dark-theme button.bg-blue-500,
+.app.dark a.bg-blue-500,
+.dark-theme a.bg-blue-500,
+.app.dark button.bg-indigo-500,
+.dark-theme button.bg-indigo-500 {
+  background-color: #4f46e5 !important;
+  color: white !important;
+}
+
+.app.dark button.bg-gray-200,
+.dark-theme button.bg-gray-200 {
+  background-color: #334155 !important;
+  color: #e2e8f0 !important;
+}
+
+/* Footer */
+.app.dark footer.bg-gray-800, .dark-theme footer.bg-gray-800 {
+  background-color: #0f172a !important;
+}
+
+.app.dark footer .text-gray-500, .dark-theme footer .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+.app.dark footer .text-gray-500:hover, .dark-theme footer .text-gray-500:hover {
+  color: #e2e8f0 !important;
+}
+
+/* Deep Fake Detection Page */
+.app.dark p, .dark-theme p {
+  color: #cbd5e1 !important;
+}
+
+/* Fix Image Recognition page title */
+.app.dark div[id*="image-recognition"] h1,
+.dark-theme div[id*="image-recognition"] h1,
+.app.dark div[class*="recognition"] h1,
+.dark-theme div[class*="recognition"] h1 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Upload area */
+.app.dark [class*="upload-area"], 
+.dark-theme [class*="upload-area"],
+.app.dark .border-dashed,
+.dark-theme .border-dashed {
+  background-color: #1e293b !important;
+  border-color: #4f46e5 !important;
+  border-width: 1px !important;
+}
+
+/* Form fields and inputs */
+.app.dark label.text-gray-700,
+.dark-theme label.text-gray-700 {
+  color: #e2e8f0 !important;
+}
+
+.app.dark .bg-white label,
+.dark-theme .bg-white label {
+  color: #e2e8f0 !important;
+}
+
+.app.dark .text-gray-600,
+.dark-theme .text-gray-600 {
+  color: #cbd5e1 !important;
+}
+
+/* Add transition for smooth theme switching */
+body, nav, main, footer, div, p, h1, h2, h3, h4, h5, h6, a {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
