@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../config';
 
 const AIImageDetection = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -51,7 +52,7 @@ const AIImageDetection = () => {
         formData.append('face_threshold', faceThreshold);
         
         console.log("Sending request to API with file...");
-        const response = await fetch('http://localhost:8000/detect-ai-image', {
+        const response = await fetch(`${API_URL}/detect-ai-image`, {
           method: 'POST',
           body: formData,
         });
@@ -90,7 +91,7 @@ const AIImageDetection = () => {
         
         // Use regular form data (not FormData) for URL submissions
         console.log("Sending request to API with URL...");
-        const response = await fetch('http://localhost:8000/detect-ai-image', {
+        const response = await fetch(`${API_URL}/detect-ai-image`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',

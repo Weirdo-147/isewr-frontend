@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../config';
 
 const Recognition = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -38,7 +39,7 @@ const Recognition = () => {
     formData.append('category', selectedCategory);
 
     try {
-      const response = await fetch('http://localhost:8000/recognize', {
+      const response = await fetch(`${API_URL}/recognize`, {
         method: 'POST',
         body: formData,
       });

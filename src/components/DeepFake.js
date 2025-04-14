@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../config';
 
 const DeepFake = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -23,7 +24,7 @@ const DeepFake = () => {
     formData.append('file', selectedImage);
 
     try {
-      const response = await fetch('http://localhost:8000/deepfake', {
+      const response = await fetch(`${API_URL}/deepfake`, {
         method: 'POST',
         body: formData,
       });

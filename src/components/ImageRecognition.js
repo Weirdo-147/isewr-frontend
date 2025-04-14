@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { uploadImage } from '../supabase';
 import ProductResults from './ProductResults';
+import { API_URL } from '../config';
 
 // Add a throttling delay utility at the top of the file after imports
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -117,11 +118,9 @@ const ImageRecognition = () => {
     setIsRecognizing(true);
     setError(null);
 
-    try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      
+    try {      
       // Call the recognition endpoint
-      const response = await fetch(`${backendUrl}/recognize`, {
+      const response = await fetch(`${API_URL}/recognize`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -152,11 +151,9 @@ const ImageRecognition = () => {
     setIsLoadingCelebrity(true);
     setError(null);
 
-    try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      
+    try {      
       // Call the celebrity detection endpoint
-      const response = await fetch(`${backendUrl}/celebrity`, {
+      const response = await fetch(`${API_URL}/celebrity`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -230,10 +227,8 @@ const ImageRecognition = () => {
     if (!query) return;
     
     setIsLoadingSerp(true);
-    try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      
-      const response = await fetch(`${backendUrl}/serp-search`, {
+    try {      
+      const response = await fetch(`${API_URL}/serp-search`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -725,13 +720,11 @@ const ImageRecognition = () => {
     setProductMatches(null);
     
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      
       console.log(`Making Google Lens API request for image: ${imageUrl}`);
       
       // Use fetchWithRetry instead of regular fetch
       const response = await fetchWithRetry(
-        `${backendUrl}/google-lens`,
+        `${API_URL}/google-lens`,
         {
           method: 'POST',
           headers: {
@@ -809,13 +802,11 @@ const ImageRecognition = () => {
     setExactMatches(null);
     
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      
       console.log(`Making Google Lens Exact Matches API request with page token: ${googleLensResults.exact_matches_page_token}`);
       
       // Use fetchWithRetry instead of regular fetch
       const response = await fetchWithRetry(
-        `${backendUrl}/google-lens-exact`,
+        `${API_URL}/google-lens-exact`,
         {
           method: 'POST',
           headers: {
@@ -872,13 +863,11 @@ const ImageRecognition = () => {
     setVisualMatches(null);
     
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      
       console.log(`Making Google Lens Visual Matches API request with page token: ${googleLensResults.visual_matches_page_token}`);
       
       // Use fetchWithRetry instead of regular fetch
       const response = await fetchWithRetry(
-        `${backendUrl}/google-lens-visual`,
+        `${API_URL}/google-lens-visual`,
         {
           method: 'POST',
           headers: {
@@ -935,13 +924,11 @@ const ImageRecognition = () => {
     setProductMatches(null);
     
     try {
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      
       console.log(`Making Google Lens Products API request with page token: ${googleLensResults.products_page_token}`);
       
       // Use fetchWithRetry instead of regular fetch
       const response = await fetchWithRetry(
-        `${backendUrl}/google-lens-products`,
+        `${API_URL}/google-lens-products`,
         {
           method: 'POST',
           headers: {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { API_URL } from '../config';
 
 const VideoConvert = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -100,40 +101,38 @@ response = requests.request("POST", url, headers=headers, data=payload, files=fi
   
   const fetchStatus = async () => {
     try {
-      const response = await fetch(`http://localhost:8000/convert/${conversionId}`);
-      const data = await response.json();
+      const response = await fetch(`${API_URL}/convert/${conversionId}`);
       
+      if (!response.ok) {
+        throw new Error(`Status check failed with status: ${response.status}`);
+      }
+      
+      const data = await response.json();
       setConversionStatus(data.status);
       
-      if (data.status === 'pending') {
-        setProgress(10);
-      } else if (data.status === 'processing') {
-        // Update progress based on elapsed time to give user feedback
-        // Assuming 15 minutes for processing, increase progress proportionally
-        const elapsed = (Date.now() - startTime) / 1000; // seconds
-        const estimatedTotal = 15 * 60; // 15 minutes in seconds
-        const calculatedProgress = Math.min(90, Math.floor((elapsed / estimatedTotal) * 80) + 10);
-        setProgress(calculatedProgress);
-      } else if (data.status === 'completed') {
-        setProgress(100);
+      // If we have final result, update it
+      if (data.video_url) {
         setVideoUrl(data.video_url);
-        if (intervalIdRef.current) {
-          clearInterval(intervalIdRef.current);
-          intervalIdRef.current = null;
-        }
-        setLoading(false);
-      } else if (data.status === 'failed') {
-        setError(`Conversion failed. This might be due to server issues or API limitations. 
-                 Try using a different image or prompt, or check your API key configuration.`);
-        if (intervalIdRef.current) {
-          clearInterval(intervalIdRef.current);
-          intervalIdRef.current = null;
-        }
-        setLoading(false);
       }
+      
+      // Update progress based on status
+      if (data.status === 'completed') {
+        setProgress(100);
+        setLoading(false);
+      } else if (data.status === 'processing') {
+        // Increment progress based on elapsed time
+        const elapsed = Date.now() - startTime;
+        const estimatedTotalTime = 60000; // 60 seconds estimated time
+        const progressValue = Math.min(95, Math.floor((elapsed / estimatedTotalTime) * 100));
+        setProgress(progressValue);
+      }
+      
+      return data.status;
     } catch (error) {
-      console.error('Error in fetchStatus:', error);
-      // Don't set error here to avoid too many error messages
+      console.error('Error checking status:', error);
+      setError('Failed to check conversion status');
+      setLoading(false);
+      throw error;
     }
   };
 
@@ -171,7 +170,7 @@ response = requests.request("POST", url, headers=headers, data=payload, files=fi
     formData.append('aspect_ratio', aspectRatio);
 
     try {
-      const response = await fetch('http://localhost:8000/convert', {
+      const response = await fetch(`${API_URL}/convert`, {
         method: 'POST',
         body: formData,
       });

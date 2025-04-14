@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const ProductResults = ({ products, reset }) => {
   const [searchResults, setSearchResults] = useState({});
@@ -52,9 +53,7 @@ const ProductResults = ({ products, reset }) => {
     console.log(`Attempting to fetch SerpAPI ${searchType} results for:`, query);
     
     try {
-      // Use a fallback URL if the environment variable is not set
-      const backendUrl = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000';
-      const apiUrl = `${backendUrl}/serp-search`;
+      const apiUrl = `${API_URL}/serp-search`;
       console.log("Calling API endpoint:", apiUrl);
       
       const response = await axios.post(apiUrl, {

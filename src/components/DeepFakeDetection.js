@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react';
+import { API_URL } from '../config';
 
 const DeepFakeDetection = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -65,7 +66,7 @@ const DeepFakeDetection = () => {
       if (fileType === 'image') {
         // For images, use the SightEngine deepfake API
         formData.append('threshold', confidenceThreshold / 100); // Convert percent to 0-1 scale
-        response = await fetch('http://localhost:8000/detect-deepfake-image', {
+        response = await fetch(`${API_URL}/detect-deepfake-image`, {
           method: 'POST',
           body: formData,
         });
@@ -73,7 +74,7 @@ const DeepFakeDetection = () => {
         // For videos, use the mock video deepfake detection
         formData.append('mode', detectionMode);
         formData.append('threshold', confidenceThreshold);
-        response = await fetch('http://localhost:8000/detect-deepfake', {
+        response = await fetch(`${API_URL}/detect-deepfake`, {
           method: 'POST',
           body: formData,
         });
