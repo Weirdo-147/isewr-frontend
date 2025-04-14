@@ -2,7 +2,7 @@ services:
   - type: web
     name: isewr-frontend
     env: static
-    buildCommand: npm install && npm run build
+    buildCommand: bash build.sh
     staticPublishPath: ./build
     pullRequestPreviewsEnabled: true
     envVars:
