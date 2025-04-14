@@ -1,14 +1,29 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Hardcoded credentials for development only
-// In production, these should come from environment variables
-const supabaseUrl = "https://xmidmrmiixhfnccvrjqk.supabase.co";
-const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhtaWRtcm1paXhoZm5jY3ZyanFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQzMDcyOTcsImV4cCI6MjA1OTg4MzI5N30.u8ZUAhjn0X4qEc4ebA6nH2JOQeYUB5fy15K4femDGWw";
+// Get URLs from environment variables or use defaults
+const supabaseUrl = process.env.REACT_APP_SUPABASE_URL || "https://xmidmrmiixhfnccvrjqk.supabase.co";
+const supabaseAnonKey = process.env.REACT_APP_SUPABASE_KEY || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhtaWRtcm1paXhoZm5jY3ZyanFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQzMDcyOTcsImV4cCI6MjA1OTg4MzI5N30.u8ZUAhjn0X4qEc4ebA6nH2JOQeYUB5fy15K4femDGWw";
 
-// Create the Supabase client
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+// Get the site URL - this is used for redirects after OAuth
+const siteUrl = window.location.origin;
+console.log('Current site URL:', siteUrl);
+
+// Create the Supabase client with auth options
+const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
+    flowType: 'pkce',
+    // Set the site URL to ensure redirects work properly
+    site_url: siteUrl,
+    // Set redirect URLs
+    redirectTo: `${siteUrl}/auth/callback`
+  }
+});
 
 console.log('Supabase client initialized with URL:', supabaseUrl);
+console.log('Auth redirect URL set to:', `${siteUrl}/auth/callback`);
 
 // Function to submit contact form data
 export const submitContactForm = async (formData) => {

@@ -11,6 +11,8 @@ const AuthCallback = () => {
     const handleAuthCallback = async () => {
       try {
         console.log("Auth callback handler starting");
+        console.log("Current URL:", window.location.href);
+        console.log("Current origin:", window.location.origin);
         
         // Check if we have a hash containing access_token (implicit flow)
         const hashParams = new URLSearchParams(window.location.hash.slice(1));
@@ -39,7 +41,7 @@ const AuthCallback = () => {
           
           if (data?.session) {
             console.log('Successfully set session from tokens');
-            navigate('/dashboard');
+            navigate('/dashboard', { replace: true });
             return;
           }
         }
@@ -57,7 +59,7 @@ const AuthCallback = () => {
           
           if (data?.session) {
             console.log('Successfully exchanged code for session');
-            navigate('/dashboard');
+            navigate('/dashboard', { replace: true });
             return;
           }
         }
@@ -68,7 +70,7 @@ const AuthCallback = () => {
         
         if (data?.session) {
           console.log('Found existing session');
-          navigate('/dashboard');
+          navigate('/dashboard', { replace: true });
           return;
         }
         

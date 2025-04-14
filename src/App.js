@@ -78,18 +78,13 @@ export const AuthProvider = ({ children }) => {
     signInWithGoogle: () => supabase.auth.signInWithOAuth({ 
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
         skipBrowserRedirect: false
       }
     }),
     signInWithGithub: () => supabase.auth.signInWithOAuth({ 
       provider: 'github',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-        skipBrowserRedirect: false,
-        queryParams: {
-          redirect_uri: `${window.location.origin}/auth/callback`
-        }
+        skipBrowserRedirect: false
       }
     })
   };
