@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" width="180" height="180">
+  <!-- Background -->
+  <rect width="180" height="180" rx="40" fill="#1e40af" />
+  
+  <!-- Camera lens -->
+  <circle cx="90" cy="90" r="55" fill="#60a5fa" stroke="#bfdbfe" stroke-width="4" />
+  <circle cx="90" cy="90" r="40" fill="#2563eb" stroke="#dbeafe" stroke-width="2" />
+  <circle cx="90" cy="90" r="25" fill="#1e40af" />
+  
+  <!-- Lens reflection -->
+  <circle cx="75" cy="75" r="12" fill="#dbeafe" opacity="0.7" />
+  <circle cx="65" cy="65" r="5" fill="white" opacity="0.9" />
+  
+  <!-- LL stylized logo -->
+  <path d="M40 120 L40 60 L55 60 L55 105 L75 105 L75 120 Z" fill="#dbeafe" />
+  <path d="M85 120 L85 60 L100 60 L100 105 L120 105 L120 120 Z" fill="#dbeafe" opacity="0.7" />
+</svg> 
